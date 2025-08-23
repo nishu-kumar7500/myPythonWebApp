@@ -16,14 +16,14 @@ jobs:
 
     steps:
       - name: Clone Repositry
-        uses: actions/checkout@4
+        uses: actions/checkout@v5
 
       - name: Scan code for Secrets & password
         uses: gitleaks/gitleaks-action@v2
       
       - name: Scan Code
         run: |
-          gitleaks detect --source ./template --exit-code 1
+          gitleaks detect --source ./templates --exit-code 1
   
   trivy-file-scan:
     runs-on: ubuntu-latest
@@ -31,7 +31,7 @@ jobs:
 
     steps:
       - name: Clone Repositry
-        uses: actions/checkout@4
+        uses: actions/checkout@v5
 
       - name: Run Trivy vulnerability scanner in fs mode
         uses: aquasecurity/trivy-action@0.28.0
@@ -49,7 +49,7 @@ jobs:
       contents: read #This is required for actions/checkout
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up Python version
         uses: actions/setup-python@v5
