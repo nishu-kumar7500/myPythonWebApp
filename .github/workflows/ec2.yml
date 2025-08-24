@@ -68,7 +68,7 @@ jobs:
         ls -la .
 
     - name: Copy artifact to EC2
-      uses: appleboy/scp-action@v0.1.7
+      uses: appleboy/scp-action@v1
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
@@ -78,7 +78,7 @@ jobs:
         target: "/var/www/myapp/"
 
     - name: Deploy to EC2 server
-      uses: appleboy/ssh-action@v
+      uses: appleboy/ssh-action@v1
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
