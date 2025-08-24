@@ -66,10 +66,10 @@ jobs:
       - name: Run Trivy vulnerability scanner in fs mode
         uses: aquasecurity/trivy-action@0.28.0
         with:
-          scan-type: fs
+          scan-type: 'fs'
           scan-ref: '.'
-          format: table
-          severity: HIGH,CRITICA
+          format: 'table'
+          severity: 'CRITICAL,HIGH'
 
   deploy:
     runs-on: ubuntu-latest
@@ -99,3 +99,4 @@ jobs:
           slot-name: 'Production'
 
           
+
