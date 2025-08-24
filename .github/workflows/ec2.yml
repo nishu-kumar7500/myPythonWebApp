@@ -37,7 +37,7 @@ jobs:
     - name: Create Python Web App Deployable  Package
       run: |
         mkdir -p deploy
-        tar -czf deploy/app.tar.gz main.py requirements.txt templates
+        tar -czf deploy/app.tar.gz main.py requirements.txt templates/
     ## Upload Artifact
     - name: Upload artifact
       uses: actions/upload-artifact@v4
@@ -61,6 +61,12 @@ jobs:
       with:
         name: python-app
         path: .
+    - name: List deploy contents
+      run: |
+        pwd
+        ls -la 
+        ls -la deploy
+
     - name: Copy artifact to EC2
       uses: appleboy/scp-action@v0.1.7
       with:
