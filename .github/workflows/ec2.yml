@@ -85,18 +85,9 @@ jobs:
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT || 22 }}
         script:
-            #set -e
-            #cd /var/www/myapp
-            #tar -xzf artifact/app.tar.gz -C . && rm -f artifact/app.tar.gz
-            #python3 -m venv venv || true
-            #sudo chown -R ubuntu /var/www/myapp && sudo chmod -R g+rwX /var/www/myapp && sudo systemctl daemon-reload && sudo systemctl restart myapp && sudo systemctl status myapp --no-pager || true
-            set -euo pipefail
-            APP_DIR=/var/www/myapp
-            ARTIFACT=$APP_DIR/artifact/app.tar.gz
-            SERVICE=myapp
-            UNIT=/etc/systemd/system/${SERVICE}.service
-            cd "$APP_DIR"
+            set -e
+            cd /var/www/myapp
+            tar -xzf artifact/app.tar.gz -C . && rm -f artifact/app.tar.gz
+            python3 -m venv venv || true
             sudo chown -R ubuntu /var/www/myapp && sudo chmod -R g+rwX /var/www/myapp && sudo systemctl daemon-reload && sudo systemctl restart myapp && sudo systemctl status myapp --no-pager || true
-
-
-
+    
