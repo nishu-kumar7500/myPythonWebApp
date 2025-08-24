@@ -85,6 +85,7 @@ jobs:
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT || 22 }}
         script: |
+            sudo apt install python3-venv -y
             set -e
             cd /var/www/myapp
             ls -la
