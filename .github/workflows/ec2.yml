@@ -89,12 +89,5 @@ jobs:
             cd /var/www/myapp
             tar -xzf app.tar.gz && rm -f app.tar.gz
             python3 -m venv venv
+            sudo chown -R ubuntu /var/www/myapp && sudo chmod -R g+rwX /var/www/myapp && sudo systemctl daemon-reload && sudo systemctl restart myapp && sudo systemctl status myapp --no-pager || true
 
-            # Permissions
-            #sudo chown -R $USER:$(id -gn) /var/www/myapp
-            #sudo chmod -R g+rwX /var/www/myapp
-
-            # Restart service
-            sudo systemctl daemon-reload
-            sudo systemctl restart myapp
-            sudo systemctl status myapp --no-pager || true
