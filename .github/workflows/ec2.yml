@@ -87,7 +87,7 @@ jobs:
         script:
             set -e
             cd /var/www/myapp
-            tar -xzf app.tar.gz && rm -f app.tar.gz
-            python3 -m venv venv
+            tar -xzf artifact/app.tar.gz -C . && rm -f artifact/app.tar.gz
+            python3 -m venv venv || true
             sudo chown -R ubuntu /var/www/myapp && sudo chmod -R g+rwX /var/www/myapp && sudo systemctl daemon-reload && sudo systemctl restart myapp && sudo systemctl status myapp --no-pager || true
 
