@@ -76,3 +76,25 @@ jobs:
         port: ${{ secrets.PORT || 22 }}
         source: "artifact/app.tar.gz"
         target: "/var/www/myapp/"
+
+    - name: Deploy to EC2 server
+      uses: appleboy/ssh-action@v
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.KEY }}
+        port: ${{ secrets.PORT || 22 }}
+        script:
+            set -e
+            cd /var/www/myapp
+            tar -xzf app.tar.gz && rm -f app.tar.gz
+            python3 -m venv venv
+
+            # Permissions
+            #sudo chown -R $USER:$(id -gn) /var/www/myapp
+            #sudo chmod -R g+rwX /var/www/myapp
+
+            # Restart service
+            sudo systemctl daemon-reload
+            sudo systemctl restart myapp
+            sudo systemctl status myapp --no-pager || true
