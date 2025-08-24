@@ -60,7 +60,7 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: python-app
-        path: .
+        path: ./artifact
     - name: List deploy contents
       run: |
         pwd
@@ -74,5 +74,5 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT || 22 }}
-        source: "python-app/app.tar.gz"
+        source: "artifact/app.tar.gz"
         target: "/var/www/myapp/"
