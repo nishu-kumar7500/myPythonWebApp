@@ -92,5 +92,6 @@ jobs:
             sudo apt install python3-flask -y
             sudo apt install gunicorn -y
             python3 -m venv venv || true
+            /var/www/myapp/venv/bin/gunicorn -b 0.0.0.0:5000 main:myapp
             sudo chown -R ubuntu /var/www/myapp && sudo chmod -R g+rwX /var/www/myapp && sudo systemctl daemon-reload && sudo systemctl restart myapp && sudo systemctl status myapp --no-pager || true
     
