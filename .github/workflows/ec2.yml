@@ -37,7 +37,7 @@ jobs:
     - name: Create Python Web App Deployable  Package
       run: |
         mkdir -p deploy
-        tar -czf deploy/app.tar.gz main.py requirements.txt templates/index.html
+        tar -czf deploy/app.tar.gz main.py requirements.txt templates
     ## Upload Artifact
     - name: Upload artifact
       uses: actions/upload-artifact@v4
