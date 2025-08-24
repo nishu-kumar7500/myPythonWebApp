@@ -30,5 +30,12 @@ jobs:
     - name: Run tests
       run: |
         export PYTHONPATH=$(pwd)
-        pytest -q tests/test_app.py
+        pytest -q tests/test_app.py 
+    ####################################################################################################
+    # add || echo "No tests found, skipping." after pytest -q tests/test_app.py if you want to skip test#
+    ####################################################################################################
+    - name: Create Python Web App Deployable  Package
+      run: |
+        mkdir -p deploy
+        tar -czf deploy/app.tar.gz main.py requirement.txt templates
     
