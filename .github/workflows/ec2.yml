@@ -85,11 +85,12 @@ jobs:
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT || 22 }}
         script: |
-            sudo apt install python3-venv -y
             set -e
             cd /var/www/myapp
             ls -la
             tar -xzf app.tar.gz && rm -f app.tar.gz
             python3 -m venv venv || true
+            source /var/www/myapp/venv/bin/activate
+            pip install flask
             sudo chown -R ubuntu /var/www/myapp && sudo chmod -R g+rwX /var/www/myapp && sudo systemctl daemon-reload && sudo systemctl restart myapp && sudo systemctl status myapp --no-pager || true
     
