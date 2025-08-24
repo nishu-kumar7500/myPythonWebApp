@@ -62,11 +62,11 @@ jobs:
         name: python-app
         path: .
     - name: Copy artifact to EC2
-      uses: appleboy/scp-action@v1
+      uses: appleboy/scp-action@v0.1.7
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
-        port: ${{ secrets.PORT }}
-        source: "app.tar.gz"
+        port: ${{ secrets.PORT || 22 }}
+        source: "deploy/app.tar.gz"
         target: "/var/www/myapp/"
