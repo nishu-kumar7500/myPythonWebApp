@@ -37,5 +37,5 @@ jobs:
     - name: Create Python Web App Deployable  Package
       run: |
         mkdir -p deploy
-        tar -czf deploy/app.tar.gz main.py requirements.txt templates
+        tar -czf deploy/app.tar.gz main.py requirements.txt templates/index.html
     
