@@ -11,18 +11,22 @@
 import pytest
 from main import app
 
-def test_root_ok():
-    client = app.test_client()
+@pytest.fixture
+def client():
+    app.config['TESTING'] = True
+    with app.test_client() as client:
+        yield client
+
+def test_home_status_code(client):
     response = client.get("/")
-    
-    # Assert HTTP status code is 200 OK
-    assert response.status_code == 200, f"Expected status code 200 but got {response.status_code}"
-    
-    # Parse JSON data from response
-    json_data = response.get_json()
-    
-    # Assert that JSON data is not None
-    assert json_data is not None, "Response did not return JSON"
-    
-    # Assert that 'message' key exists in the JSON response
-    assert "message" in json_data, "'message' key not found in response JSON"
+    assert response.status_code == 200, f"Expected 200 OK but got {response.status_code}"
+
+def test_home_contains_expected_html(client):
+    response = client.get("/")
+    html = response.get_data(as_text=True)
+    # Basic check: page contains a known string from your index.html, e.g., title text in Hindi
+    assert "जय श्री राम" in html, "Home page does not contain expected title"
+
+def test_content_type_html(client):
+    response = client.get("/")
+    assert "text/html" in response.content_type, "Response is not HTML"
