@@ -33,7 +33,7 @@ stages:
         command: 'build'
         Dockerfile: '**/Dockerfile'
         tags: |
-          ux007893/appliation:$(tag)
+          $(tag)
 #          ux007893/appliation:latest
     - task: Docker@2
       displayName: Pushing Image to Docker Hub
