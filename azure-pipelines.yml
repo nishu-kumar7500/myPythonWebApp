@@ -9,7 +9,7 @@ resources:
 
 variables:
   tag: '$(Build.BuildId)'
-  dockerUserName: '$(ux007893)'
+  dockerUserName: 'ux007893'
 
 stages:
 - stage: Build
