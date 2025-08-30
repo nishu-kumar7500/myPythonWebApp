@@ -15,7 +15,7 @@ spec:
         app: myapp
     spec:
       containers:
-        - image: 'ux007893/application:726'
+        - image: 'ux007893/pythonimage:727'
           name: myapp
           ports:
             - containerPort: 80
