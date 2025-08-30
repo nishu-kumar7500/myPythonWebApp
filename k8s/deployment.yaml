@@ -2,21 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: my-app
-  name: my-app
+    app: myapp
+  name: myapp
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: my-app
+      app: myapp
   template:
     metadata:
       labels:
-        app: my-app
+        app: myapp
     spec:
       containers:
         - image: 'ux007893/appliation:722'
-          name: my-app
+          name: myapp
           ports:
             - containerPort: 80
-              name: my-app
+              name: myapp
