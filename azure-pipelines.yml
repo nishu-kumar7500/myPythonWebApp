@@ -32,3 +32,5 @@ stages:
         containerRegistry: 'DockerRegistry'
         repository: '$(dockerUserName)/pythonimage'
         command: 'push'
+        tags: |
+         $(tag)
