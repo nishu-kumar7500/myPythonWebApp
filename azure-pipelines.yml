@@ -33,4 +33,4 @@ stages:
         repository: '$(dockerUserName)/pythonimage'
         command: 'push'
         tags: |
-         $(dockerUserName)/pythonimage:$(tag)
+         $(tag)
