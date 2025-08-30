@@ -1,21 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: python-app
   labels:
-    app: python-app
+    app: my-app
+  name: my-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: python-app
+      app: my-app
   template:
     metadata:
       labels:
-        app: python-app
+        app: my-app
     spec:
       containers:
-      - name: python-app
-        image: ux007893/appliation:722   # Docker Hub image
-        ports:
-        - containerPort: 5000
+        - image: 'ux007893/appliation:722'
+          name: my-app
+          ports:
+            - containerPort: 80
+              name: my-app
