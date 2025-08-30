@@ -31,13 +31,13 @@ stages:
         command: build
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
-          ux007893/pythonimage:$(tag)
-          ux007893/pythonimage:latest
+          ux007893/appliation:$(tag)
+          ux007893/appliation:latest
     - task: Docker@2
       displayName: Pushing Image to Docker Hub
       inputs:
         containerRegistry: 'DockerRegistry'
-        repository: 'ux007893/pythonimage'
+        repository: 'ux007893/appliation'
         command: 'push'
         tags: |
          $(tag)
