@@ -56,11 +56,9 @@ stages:
           
           # Replace these with your GitHub username + PAT (Personal Access Token)
           GITHUB_USERNAME="nishu-kumar7500"
+          GITHUB_TOKEN="$(GITHUB_TOKEN)"   # from pipeline secret
+          REPO_URL="https://${GITHUB_USERNAME}:${GITHUB_TOKEN}@github.com/${GITHUB_USERNAME}/myPythonWebApp.git"
           
-          REPO_NAME="myPythonWebApp"
-          
-          # GitHub repository URL
-          REPO_URL="https://${GITHUB_USERNAME}:${GITHUB_TOKEN}@github.com/${GITHUB_USERNAME}/${REPO_NAME}.git"
           
           # -----------------------------
           # Clone repo into /tmp
@@ -70,8 +68,8 @@ stages:
           cd "$LOCAL_DIR"
           
           # Configure Git user identity
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "azure-pipelines"
+          git config user.email "azure-pipelines@github.com"
           
           # -----------------------------
           # Install yq
