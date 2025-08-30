@@ -88,7 +88,7 @@ stages:
           TAG=$(Build.BuildId)             # Or from pipeline env var
           
           # Kubernetes manifest file
-          FILE_PATH="k8s-specifications/vote-deployment.yaml"
+          FILE_PATH="k8s/deployment.yaml"
           echo "Updating image tag for $FILE_PATH"
           
           echo "--- Before Update ---"
