@@ -29,7 +29,7 @@ stages:
       displayName: Build an image
       inputs:
         containerRegistry: 'DockerRegistry'
-        repository: 'appliation'
+        repository: 'ux007893/appliation'
         command: 'build'
         Dockerfile: '**/Dockerfile'
         tags: |
