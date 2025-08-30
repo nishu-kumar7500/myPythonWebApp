@@ -9,6 +9,7 @@ resources:
 
 variables:
   tag: '$(Build.BuildId)'
+  dockerUserName: '$(ux007893)'
 
 stages:
 - stage: Build
@@ -25,9 +26,9 @@ stages:
         command: build
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
-          $(tag)
+          $(dockerUserName)/pythonimage:$(tag)
     - task: Docker@2
       inputs:
-        containerRegistry: 'docker-hub-connection7500'
-        repository: 'pythonimage'
+        containerRegistry: 'DockerRegistry'
+        repository: '$(dockerUserName)/pythonimage'
         command: 'push'
