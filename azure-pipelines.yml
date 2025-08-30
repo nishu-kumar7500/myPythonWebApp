@@ -32,7 +32,7 @@ stages:
       displayName: Build an image
       inputs:
         containerRegistry: 'DockerRegistry'
-        repository: 'ux007893/appliation'
+        repository: 'ux007893/pythonimage'
         command: 'build'
         Dockerfile: '**/Dockerfile'
         tags: |
@@ -42,7 +42,7 @@ stages:
       displayName: Pushing Image to Docker Hub
       inputs:
         containerRegistry: 'DockerRegistry'
-        repository: 'ux007893/appliation'
+        repository: 'ux007893/pythonimage'
         command: 'push'
         tags: |
          $(tag)
@@ -56,6 +56,8 @@ stages:
           # -----------------------------
           # GitHub Repo Settings
           # -----------------------------
+          # This cript will be use to update the manifest file in GitHub
+          #------------------------------------------------------------
           
           # Replace these with your GitHub username + PAT (Personal Access Token)
           GITHUB_USERNAME="nishu-kumar7500"
@@ -84,7 +86,7 @@ stages:
           # -----------------------------
           # Define pipeline vars
           # -----------------------------
-          IMAGE_REPO="application"
+          IMAGE_REPO="pythonimage"
           DOCKER_HUB_USERNAME="ux007893"   # DockerHub username
           TAG=$(Build.BuildId)             # Or from pipeline env var
           
